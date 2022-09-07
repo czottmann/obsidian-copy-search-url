@@ -1,9 +1,9 @@
 {
-	"id": "obsidian-sample-plugin",
-	"name": "Sample Plugin",
+	"id": "obsidian-better-saved-searches",
+	"name": "Better Saved Searches",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API.",
+	"description": "Adds QOL improvements for saving searches to the starred list.",
 	"author": "Obsidian",
 	"authorUrl": "https://obsidian.md",
 	"isDesktopOnly": false
