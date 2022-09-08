@@ -53,7 +53,7 @@ then
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     git add -A .
-    git commit -m"Update to version ${NEW_VERSION}"
+    git commit -m"[REL] Releases version ${NEW_VERSION}"
     git tag "${NEW_VERSION}"
     git push
     LEFTHOOK=0 git push --tags
