@@ -25,7 +25,7 @@ jobs:
       - name: Build
         id: build
         run: |
-          npm
+          npm install
           npm run build
       # Package the required files into a zip
       - name: Package
