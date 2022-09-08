@@ -24,6 +24,13 @@ I wanted this functionality for a while so I've built it myself.  It was a good
 learning experience for me.
 
 
+## Development
+
+Clone the repository, run `pnpm install` OR `npm install` to install the
+dependencies.  Afterwards, run `pnpm dev` OR `npm run dev` to compile and have
+it watch for file changes.
+
+
 ## License
 
 MIT, see [LICENSE.md](LICENSE.md).
