@@ -1,205 +1,74 @@
-import {
-  App,
-  Editor,
-  MarkdownView,
-  Modal,
-  Notice,
-  Plugin,
-  PluginSettingTab,
-  Setting,
-} from "obsidian";
+import { Notice, Plugin, setIcon } from "obsidian";
+import { SearchLeafView } from "./types";
 
-interface BetterSavedSearchesSettings {
-  mySetting: string;
-}
-
-const DEFAULT_SETTINGS: BetterSavedSearchesSettings = {
-  mySetting: "default",
-};
-
-export default class BetterSavedSearches extends Plugin {
-  settings: BetterSavedSearchesSettings;
-
-  addButton() {
-    const searchLeaf = this.app.workspace.getLeavesOfType("search")[0];
-    const searchNavHeader = searchLeaf.view.containerEl.children[0];
-
-    // Adding button to nav header
-    const btn = searchNavHeader.children[0].createEl("div", {
-      cls: "clickable-icon nav-action-button",
-      text: "star search",
-    });
-
-    return;
-    debugger;
-  }
+export default class CopySearchUrl extends Plugin {
+  button: HTMLDivElement;
 
   async onload() {
-    await this.loadSettings();
-
-    // Initialize
-    this.app.workspace.onLayoutReady(() => this.addButton());
-
-    //   this.app.workspace.getLeavesOfType("search").forEach((leaf) => {
-    //     const container = leaf.view.containerEl as HTMLDivElement;
-    //     const navContainer = container.querySelector(
-    //       "div.nav-buttons-container",
-    //     );
-    //     if (!navContainer) {
-    //       return null;
-    //     }
-
-    //     console.log(leaf, navContainer);
-    //     // this.addSingleButton(leaf, navContainer);
-
-    //     const newIcon = document.createElement("div");
-    //     this.updateButtonIcon(leaf, newIcon);
-    //     newIcon.className =
-    //       `${this.collapseButtonClass} collapse-all-plugin-button`;
-    //     this.plugin.registerDomEvent(newIcon, "click", () => {
-    //       this.onSingleButtonClick(leaf);
-    //     });
-    //     navContainer.appendChild(newIcon);
-
-    //     // Register click handler on leaf to toggle button icon
-    //     const handler = () => {
-    //       this.updateButtonIcon(leaf, newIcon);
-    //     };
-    //     leaf.view.containerEl.on("click", this.collapseClickTarget, handler);
-    //     this.plugin.register(() => {
-    //       leaf.view.containerEl.off("click", this.collapseClickTarget, handler);
-    //     });
-    //   });
-    // });
-
-    // This creates an icon in the left ribbon.
-    const ribbonIconEl = this.addRibbonIcon(
-      "dice",
-      "Sample Plugin",
-      (evt: MouseEvent) => {
-        const gs = this.app.internalPlugins.getPluginById("global-search");
-        debugger;
-        const button = gs.createEl("button", { text: "Go" });
-        gs.addedButtonEls.push(button);
-        debugger;
-      },
-    );
-    // Perform additional things with the ribbon
-    ribbonIconEl.addClass("my-plugin-ribbon-class");
-
-    // This adds a status bar item to the bottom of the app. Does not work on mobile apps.
-    const statusBarItemEl = this.addStatusBarItem();
-    statusBarItemEl.setText("Status Bar Text");
-
-    // This adds a simple command that can be triggered anywhere
-    this.addCommand({
-      id: "open-sample-modal-simple",
-      name: "Open sample modal (simple)",
-      callback: () => {
-        new SampleModal(this.app).open();
-      },
-    });
-    // This adds an editor command that can perform some operation on the current editor instance
-    this.addCommand({
-      id: "sample-editor-command",
-      name: "Sample editor command",
-      editorCallback: (editor: Editor, view: MarkdownView) => {
-        console.log(editor.getSelection());
-        editor.replaceSelection("Sample Editor Command");
-      },
-    });
-    // This adds a complex command that can check whether the current state of the app allows execution of the command
-    this.addCommand({
-      id: "open-sample-modal-complex",
-      name: "Open sample modal (complex)",
-      checkCallback: (checking: boolean) => {
-        // Conditions to check
-        const markdownView = this.app.workspace.getActiveViewOfType(
-          MarkdownView,
+    this.app.workspace.onLayoutReady(() => {
+      if (this.isSearchDisabled()) {
+        new Notice(
+          "Core search plugin is disabled, can't set up Copy Search URL plugin! Please enable core Search plugin and reload.",
         );
-        if (markdownView) {
-          // If checking is true, we're simply "checking" if the command can be run.
-          // If checking is false, then we want to actually perform the operation.
-          if (!checking) {
-            new SampleModal(this.app).open();
-          }
+        return;
+      }
 
-          // This command will only show up in Command Palette when the check function returns true
-          return true;
-        }
-      },
+      this.createCopyUrlButton();
+      this.addButtonToSearchNavigation();
+      this.addButtonClickListener();
     });
-
-    // This adds a settings tab so the user can configure various aspects of the plugin
-    this.addSettingTab(new SampleSettingTab(this.app, this));
-
-    // If the plugin hooks up any global DOM events (on parts of the app that doesn't belong to this plugin)
-    // Using this function will automatically remove the event listener when this plugin is disabled.
-    this.registerDomEvent(document, "click", (evt: MouseEvent) => {
-      console.log("click", evt);
-    });
-
-    // When registering intervals, this function will automatically clear the interval when the plugin is disabled.
-    this.registerInterval(
-      window.setInterval(() => console.log("setInterval"), 5 * 60 * 1000),
-    );
   }
 
   onunload() {
+    if (this.isSearchDisabled()) {
+      return;
+    }
+
+    this.removeCopyUrlButton();
   }
 
-  async loadSettings() {
-    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+  private createCopyUrlButton() {
+    this.button = document.createElement("div");
+    this.button.setAttribute("class", "nav-action-button");
+    this.button.setAttribute("aria-label", "Copy Obsidian search URL");
+    setIcon(this.button, "link");
   }
 
-  async saveSettings() {
-    await this.saveData(this.settings);
-  }
-}
-
-class SampleModal extends Modal {
-  constructor(app: App) {
-    super(app);
+  private addButtonToSearchNavigation() {
+    const searchNavHeader = this.getSearchLeaf().view.containerEl.children[0];
+    searchNavHeader.children[0].appendChild(this.button);
   }
 
-  onOpen() {
-    const { contentEl } = this;
-    contentEl.setText("Woah!");
+  private addButtonClickListener() {
+    this.registerDomEvent(this.button, "click", async (evt: MouseEvent) => {
+      if (this.getSearchQuery() === "") {
+        return;
+      }
+
+      await navigator.clipboard.writeText(this.getObsidianUrl());
+      new Notice("Obsidian search URL copied!");
+    });
   }
 
-  onClose() {
-    const { contentEl } = this;
-    contentEl.empty();
-  }
-}
-
-class SampleSettingTab extends PluginSettingTab {
-  plugin: BetterSavedSearches;
-
-  constructor(app: App, plugin: BetterSavedSearches) {
-    super(app, plugin);
-    this.plugin = plugin;
+  private removeCopyUrlButton() {
+    this.button.parentNode?.removeChild(this.button);
   }
 
-  display(): void {
-    const { containerEl } = this;
+  private isSearchDisabled() {
+    return this.getSearchLeaf() === undefined;
+  }
 
-    containerEl.empty();
+  private getSearchLeaf() {
+    return this.app.workspace.getLeavesOfType("search")[0];
+  }
 
-    containerEl.createEl("h2", { text: "Settings for my awesome plugin." });
+  private getSearchQuery() {
+    return (this.getSearchLeaf().view as SearchLeafView)?.getQuery();
+  }
 
-    new Setting(containerEl)
-      .setName("Setting #1")
-      .setDesc("It's a secret")
-      .addText((text) =>
-        text
-          .setPlaceholder("Enter your secret")
-          .setValue(this.plugin.settings.mySetting)
-          .onChange(async (value) => {
-            console.log("Secret: " + value);
-            this.plugin.settings.mySetting = value;
-            await this.plugin.saveSettings();
-          })
-      );
+  private getObsidianUrl() {
+    const query = encodeURIComponent(this.getSearchQuery());
+    const vault = encodeURIComponent(this.app.vault.getName());
+    return `obsidian://search?vault=${vault}&query=${query}`;
   }
 }
