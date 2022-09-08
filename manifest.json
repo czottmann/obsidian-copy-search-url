@@ -1,10 +1,10 @@
 {
-	"id": "obsidian-better-saved-searches",
-	"name": "Better Saved Searches",
+	"id": "obsidian-copy-search-url",
+	"name": "Copy Search URL",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Adds QOL improvements for saving searches to the starred list.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"isDesktopOnly": false
+	"description": "Adds a button to the search view for copying the Obsidian search URL.",
+	"author": "Carlo Zottmann",
+	"authorUrl": "https://github.com/czottmann",
+	"isDesktopOnly": true
 }
