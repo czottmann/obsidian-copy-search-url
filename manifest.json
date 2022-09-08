@@ -1,10 +1,10 @@
 {
-	"id": "obsidian-copy-search-url",
-	"name": "Copy Search URL",
-	"version": "1.0.0",
-	"minAppVersion": "0.15.0",
-	"description": "Adds a button to the search view for copying the Obsidian search URL.",
-	"author": "Carlo Zottmann",
-	"authorUrl": "https://github.com/czottmann",
-	"isDesktopOnly": true
+  "id": "obsidian-copy-search-url",
+  "name": "Copy Search URL",
+  "version": "1.0.2",
+  "minAppVersion": "0.15.0",
+  "description": "Adds a button to the search view for copying the Obsidian search URL.",
+  "author": "Carlo Zottmann",
+  "authorUrl": "https://github.com/czottmann",
+  "isDesktopOnly": true
 }
