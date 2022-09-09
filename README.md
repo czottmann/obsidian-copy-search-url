@@ -19,9 +19,9 @@ That's it.
 
 1. Install [BRAT](https://github.com/TfTHacker/obsidian42-brat).
 2. Add "Copy Search URL" to BRAT:
-  1. Open "Obsidian42 - BRAT" via Settings → Community Plugins
-  2. Click "Add Beta plugin"
-  3. Use the repository address `czottmann/obsidian-copy-search-url`
+    1. Open "Obsidian42 - BRAT" via Settings → Community Plugins
+    2. Click "Add Beta plugin"
+    3. Use the repository address `czottmann/obsidian-copy-search-url`
 3. Enable "Copy Search URL" under Settings → Options → Community Plugins
 
 
