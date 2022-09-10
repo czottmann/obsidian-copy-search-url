@@ -1,4 +1,4 @@
-<img src="readme-assets/blocks.png" style="float: right; height: 64px; margin: 0 0 1rem 1rem;" alt="Plugin logo thingie: a list icon, a plus, a link icon">
+<img src="readme-assets/blocks.png" style="height: 64px;" alt="Plugin logo thingie: a list icon, a plus, a link icon">
 
 # Copy Search URL
 
