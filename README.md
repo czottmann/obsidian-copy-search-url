@@ -1,10 +1,12 @@
+<img src="readme-assets/blocks.png" style="float: right; height: 64px; margin: 0 0 1rem 1rem;" alt="Plugin logo thingie: a list icon, a plus, a link icon">
+
 # Copy Search URL
 
 This plugin adds a button to [Obsidian](https://obsidian.md)'s search view.
 Clicking it will copy the [Obsidian URL](https://help.obsidian.md/Advanced+topics/Using+obsidian+URI#Action+search)
-for the current search to the clipboard.
+for the current search to the clipboard. This allows for easier bookmarking of pre-defined searches.
 
-![Showcase GIF: both editor and search view are open, a search for "code" is done, then a mouse click on the new "Copy Obsidian search URL" is done, the result is manually pasted in the editor, then another search is done for "note", the button is clicked, and the result is pasted into the editor as well, show a different URL](https://raw.githubusercontent.com/czottmann/obsidian-copy-search-url/master/showcase.gif)
+![Showcase GIF: both editor and search view are open, a search for "code" is done, then a mouse click on the new "Copy Obsidian search URL" is done, the result is manually pasted in the editor, then another search is done for "note", the button is clicked, and the result is pasted into the editor as well, show a different URL](readme-assets/showcase.gif)
 
 
 ## Installation
