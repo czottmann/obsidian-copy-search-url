@@ -27,8 +27,8 @@ That's it.
 
 ## Please note
 
-This plugin adds functionality (a button) to a core plugin. The jury's out
-whether that a idea is a wise one, tho — either way, here we are. ;)
+This plugin adds functionality (a button) to a core plugin. The jury's out on
+whether that idea is a wise one, tho — either way, here we are. ;)
 
 I wanted this functionality for a while so I've built it myself.  It was a good
 learning experience for me.
