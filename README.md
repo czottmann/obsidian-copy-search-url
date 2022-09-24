@@ -1,10 +1,8 @@
-<img src="https://raw.githubusercontent.com/czottmann/obsidian-copy-search-url/main/readme-assets/copy-search-url-256.png" align="left" height="128" alt="Plugin logo thingie: a list icon, a plus, a link icon">
+<img src="https://raw.githubusercontent.com/czottmann/obsidian-copy-search-url/main/readme-assets/copy-search-url-256.png" height="128" alt="Plugin logo thingie: a list icon, a plus, a link icon">
 
 # Copy Search URL
 
-This plugin adds a button to [Obsidian](https://obsidian.md)'s search view.
-Clicking it will copy the [Obsidian URL](https://help.obsidian.md/Advanced+topics/Using+obsidian+URI#Action+search)
-for the current search to the clipboard. This allows for easier bookmarking of pre-defined searches.
+This plugin adds a button to [Obsidian](https://obsidian.md)'s search view. Clicking it will copy the [Obsidian URL](https://help.obsidian.md/Advanced+topics/Using+obsidian+URI#Action+search) for the current search to the clipboard. This allows for easier bookmarking of pre-defined searches.
 
 
 ## Showcase
@@ -32,27 +30,20 @@ That's it.
 
 ## Please note
 
-This plugin adds functionality (a button) to a core plugin. The jury's out on
-whether that idea is a wise one, tho — either way, here we are. ;)
+This plugin adds functionality (a button) to a core plugin. The jury's out on whether that idea is a wise one, tho — either way, here we are. ;)
 
-I wanted this functionality for a while so I've built it myself.  It was a good
-learning experience for me.
+I wanted this functionality for a while so I've built it myself.  It was a good learning experience for me.
 
 
 ## Development
 
-Clone the repository, run `pnpm install` OR `npm install` to install the
-dependencies.  Afterwards, run `pnpm dev` OR `npm run dev` to compile and have
-it watch for file changes.
+Clone the repository, run `pnpm install` OR `npm install` to install the dependencies.  Afterwards, run `pnpm dev` OR `npm run dev` to compile and have it watch for file changes.
 
 
 ## Thanks to …
 
-- the [obsidian-tasks](https://github.com/obsidian-tasks-group/obsidian-tasks)
-  crew for the "starter templates" for the GitHub Action workflow and the handy
-  `release.sh` script
-- the humans of [Discord channel `#plugin-dev`](https://discord.com/channels/686053708261228577/840286264964022302)
-  for pointing me in the right direction
+- the [obsidian-tasks](https://github.com/obsidian-tasks-group/obsidian-tasks) crew for the "starter templates" for the GitHub Action workflow and the handy `release.sh` script
+- the humans of [Discord channel `#plugin-dev`](https://discord.com/channels/686053708261228577/840286264964022302) for pointing me in the right direction
 
 
 ## Author
