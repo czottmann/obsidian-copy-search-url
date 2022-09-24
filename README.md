@@ -1,4 +1,4 @@
-<img src="readme-assets/copy-search-url-256.png" align="left" height="128" alt="Plugin logo thingie: a list icon, a plus, a link icon">
+<img src="https://raw.githubusercontent.com/czottmann/obsidian-copy-search-url/main/readme-assets/copy-search-url-256.png" align="left" height="128" alt="Plugin logo thingie: a list icon, a plus, a link icon">
 
 # Copy Search URL
 
@@ -9,7 +9,7 @@ for the current search to the clipboard. This allows for easier bookmarking of p
 
 ## Showcase
 
-![Showcase GIF: both editor and search view are open, a search for "code" is done, then a mouse click on the new "Copy Obsidian search URL" is done, the result is manually pasted in the editor, then another search is done for "note", the button is clicked, and the result is pasted into the editor as well, show a different URL](readme-assets/showcase.gif)
+![Showcase GIF: both editor and search view are open, a search for "code" is done, then a mouse click on the new "Copy Obsidian search URL" is done, the result is manually pasted in the editor, then another search is done for "note", the button is clicked, and the result is pasted into the editor as well, show a different URL](https://raw.githubusercontent.com/czottmann/obsidian-copy-search-url/main/readme-assets/showcase.gif)
 
 
 ## Installation
@@ -62,4 +62,4 @@ Carlo Zottmann, <carlo@zottmann.org>, https://zottmann.org/
 
 ## License
 
-MIT, see [LICENSE.md](LICENSE.md).
+MIT, see [LICENSE.md](https://github.com/czottmann/obsidian-copy-search-url/blob/main/LICENSE.md).
