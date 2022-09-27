@@ -51,7 +51,7 @@ export default class CopySearchUrl extends Plugin {
   }
 
   private removeCopyUrlButton() {
-    this.button.parentNode?.removeChild(this.button);
+    this.button?.detach();
   }
 
   private isSearchDisabled() {
@@ -63,7 +63,7 @@ export default class CopySearchUrl extends Plugin {
   }
 
   private getSearchQuery() {
-    return (this.getSearchLeaf().view as SearchLeafView)?.getQuery();
+    return (<SearchLeafView> this.getSearchLeaf().view)?.getQuery() || "";
   }
 
   private getObsidianUrl() {
