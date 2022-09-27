@@ -29,7 +29,7 @@ export default class CopySearchUrl extends Plugin {
 
   private createCopyUrlButton() {
     this.button = document.createElement("div");
-    this.button.setAttribute("class", "nav-action-button");
+    this.button.setAttribute("class", "clickable-icon nav-action-button");
     this.button.setAttribute("aria-label", "Copy Obsidian search URL");
     setIcon(this.button, "link");
   }
