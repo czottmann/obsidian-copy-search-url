@@ -1,6 +1,6 @@
 {
   "name": "obsidian-copy-search-url",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "This plugin for Obsidian (https://obsidian.md) adds a button to its search view for copying the Obsidian search URL.",
   "main": "main.js",
   "scripts": {
