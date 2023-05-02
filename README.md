@@ -2,12 +2,12 @@
 
 # Copy Search URL
 
-This plugin adds a button to [Obsidian](https://obsidian.md)'s search view. Clicking it will copy the [Obsidian URL](https://help.obsidian.md/Advanced+topics/Using+obsidian+URI#Action+search) for the current search to the clipboard. This allows for easier bookmarking of pre-defined searches.
+This plugin adds a menu entry to the "X results" context menu in [Obsidian](https://obsidian.md)'s search view. Clicking it will copy the [Obsidian URL](https://help.obsidian.md/Advanced+topics/Using+obsidian+URI#Action+search) for the current search to the clipboard. This allows for easier bookmarking of pre-defined searches.
 
 
 ## Showcase
 
-![Showcase GIF: both editor and search view are open, a search for "code" is done, then a mouse click on the new "Copy Obsidian search URL" is done, the result is manually pasted in the editor, then another search is done for "note", the button is clicked, and the result is pasted into the editor as well, show a different URL](https://raw.githubusercontent.com/czottmann/obsidian-copy-search-url/main/readme-assets/showcase.gif)
+![Showcase GIF: both editor and search view are open, a search for "hello" is done, then a mouse click on the new "Copy Obsidian search URL" context menu entry is done, the result is manually pasted in the editor, then another search is done for "dazuma", the menu entry is clicked, the result is pasted into the editor as well, then a third search is done for "plugins", the menu entry is clicked, that result is also pasted into the editor. Obsidian is then switched into reading mode, the three links are clicked in succession, bringing up their related searches](https://raw.githubusercontent.com/czottmann/obsidian-copy-search-url/main/readme-assets/showcase.gif)
 
 
 ## Installation
