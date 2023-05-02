@@ -13,45 +13,24 @@ export default class CopySearchUrl extends Plugin {
         return;
       }
 
-      this.createCopyUrlButton();
-      this.addButtonToSearchNavigation();
-      this.addButtonClickListener();
+      this.registerEvent(
+        this.app.workspace.on("search:results-menu", (menu, file) => {
+          menu.addItem((item) => {
+            item
+              .setTitle("Copy Obsidian search URL")
+              .setIcon("link")
+              .onClick(async () => {
+                if (this.getSearchQuery() === "") {
+                  return;
+                }
+
+                await navigator.clipboard.writeText(this.getObsidianUrl());
+                new Notice("Obsidian search URL copied!");
+              });
+          });
+        }),
+      );
     });
-  }
-
-  onunload() {
-    if (this.isSearchDisabled()) {
-      return;
-    }
-
-    this.removeCopyUrlButton();
-  }
-
-  private createCopyUrlButton() {
-    this.button = document.createElement("div");
-    this.button.setAttribute("class", "clickable-icon nav-action-button");
-    this.button.setAttribute("aria-label", "Copy Obsidian search URL");
-    setIcon(this.button, "link");
-  }
-
-  private addButtonToSearchNavigation() {
-    const searchNavHeader = this.getSearchLeaf().view.containerEl.children[0];
-    searchNavHeader.children[0].appendChild(this.button);
-  }
-
-  private addButtonClickListener() {
-    this.registerDomEvent(this.button, "click", async (evt: MouseEvent) => {
-      if (this.getSearchQuery() === "") {
-        return;
-      }
-
-      await navigator.clipboard.writeText(this.getObsidianUrl());
-      new Notice("Obsidian search URL copied!");
-    });
-  }
-
-  private removeCopyUrlButton() {
-    this.button?.detach();
   }
 
   private isSearchDisabled() {
