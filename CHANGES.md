@@ -1,4 +1,4 @@
-# 1.2.0 - 2023-05-02
+# 1.2.1 - 2023-05-02
 
 - [CHG] Changes button into menu item for Obsidian 1.2+ (#5)
 

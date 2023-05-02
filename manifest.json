@@ -1,7 +1,7 @@
 {
   "id": "obsidian-copy-search-url",
   "name": "Copy Search URL",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "minAppVersion": "1.2.0",
   "description": "Adds a button to the search view for copying the Obsidian search URL.",
   "author": "Carlo Zottmann",
