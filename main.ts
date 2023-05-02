@@ -1,9 +1,13 @@
-import { Notice, Plugin, setIcon } from "obsidian";
+import { Menu, Notice, Plugin } from "obsidian";
 import { SearchLeafView } from "./types";
 
-export default class CopySearchUrl extends Plugin {
-  button: HTMLDivElement;
+declare module "obsidian" {
+  interface Workspace {
+    on(name: "search:results-menu", callback: (menu: Menu) => any): EventRef;
+  }
+}
 
+export default class CopySearchUrl extends Plugin {
   async onload() {
     this.app.workspace.onLayoutReady(() => {
       if (this.isSearchDisabled()) {
@@ -14,21 +18,24 @@ export default class CopySearchUrl extends Plugin {
       }
 
       this.registerEvent(
-        this.app.workspace.on("search:results-menu", (menu, file) => {
-          menu.addItem((item) => {
-            item
-              .setTitle("Copy Obsidian search URL")
-              .setIcon("link")
-              .onClick(async () => {
-                if (this.getSearchQuery() === "") {
-                  return;
-                }
+        this.app.workspace.on(
+          "search:results-menu",
+          (menu: Menu) => {
+            menu.addItem((item) => {
+              item
+                .setTitle("Copy Obsidian search URL")
+                .setIcon("link")
+                .onClick(async () => {
+                  if (this.getSearchQuery() === "") {
+                    return;
+                  }
 
-                await navigator.clipboard.writeText(this.getObsidianUrl());
-                new Notice("Obsidian search URL copied!");
-              });
-          });
-        }),
+                  await navigator.clipboard.writeText(this.getObsidianUrl());
+                  new Notice("Obsidian search URL copied!");
+                });
+            });
+          },
+        ),
       );
     });
   }
