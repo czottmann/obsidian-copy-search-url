@@ -10,6 +10,15 @@ This plugin adds a menu entry to the "X results" context menu in [Obsidian](http
 ![Showcase GIF: both editor and search view are open, a search for "hello" is done, then a mouse click on the new "Copy Obsidian search URL" context menu entry is done, the result is manually pasted in the editor, then another search is done for "dazuma", the menu entry is clicked, the result is pasted into the editor as well, then a third search is done for "plugins", the menu entry is clicked, that result is also pasted into the editor. Obsidian is then switched into reading mode, the three links are clicked in succession, bringing up their related searches](https://raw.githubusercontent.com/czottmann/obsidian-copy-search-url/main/readme-assets/showcase.gif)
 
 
+## Bug Reports & Discussions
+
+For bug reports please use this repo's Issues section — thank you!
+
+I've moved all plugin **discussions** to the ActionsDotWork Forum which is a hub for both my Obsidian plugins and the macOS/iOS productivity apps I'm building: [Carlo's Obsidian Plugins - ActionsDotWork Forum](https://forum.actions.work/c/obsidian-plugins/8).
+
+The forum supports single-sign-on via GitHub, Apple and Google, meaning you can log in with your GitHub account.
+
+
 ## Installation
 
 1. Search for "Copy Search URL" in Obsidian's community plugins browser. ([This link should bring it up.](https://obsidian.md/plugins?id=zottmann))
